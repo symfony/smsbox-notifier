@@ -11,13 +11,14 @@
 
 namespace Symfony\Component\Notifier\Bridge\Smsbox\Tests\Enum;
 
-use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Notifier\Bridge\Smsbox\Enum\Mode;
 
 class ModeTest extends TestCase
 {
-    #[DataProvider('provideModeValues')]
+    /**
+     * @dataProvider provideModeValues
+     */
     public function testModeValues(Mode $mode, string $value)
     {
         self::assertSame($value, $mode->value);
