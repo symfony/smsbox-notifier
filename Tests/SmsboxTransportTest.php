@@ -11,6 +11,7 @@
 
 namespace Symfony\Component\Notifier\Bridge\Smsbox\Tests;
 
+use Symfony\Component\Clock\Test\ClockSensitiveTrait;
 use Symfony\Component\HttpClient\MockHttpClient;
 use Symfony\Component\Notifier\Bridge\Smsbox\Enum\Day;
 use Symfony\Component\Notifier\Bridge\Smsbox\Enum\Encoding;
@@ -28,6 +29,8 @@ use Symfony\Contracts\HttpClient\ResponseInterface;
 
 final class SmsboxTransportTest extends TransportTestCase
 {
+    use ClockSensitiveTrait;
+
     public static function createTransport(?HttpClientInterface $client = null): SmsboxTransport
     {
         return new SmsboxTransport('apikey', Mode::Standard, Strategy::Marketing, null, $client ?? new MockHttpClient());
@@ -137,6 +140,8 @@ final class SmsboxTransportTest extends TransportTestCase
 
     public function testQueryDateTime()
     {
+        self::mockTime('2023-12-26');
+
         $message = new SmsMessage('+33612345678', 'Hello!');
         $response = $this->createMock(ResponseInterface::class);
         $response->expects($this->exactly(2))
