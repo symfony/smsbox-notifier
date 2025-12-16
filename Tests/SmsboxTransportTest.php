@@ -207,7 +207,7 @@ final class SmsboxTransportTest extends TransportTestCase
     public function testSmsboxOptionsInvalidDateTimeAndDate()
     {
         $response = $this->createMock(ResponseInterface::class);
-        $client = new MockHttpClient(function () use ($response): ResponseInterface {
+        $client = new MockHttpClient(static function () use ($response): ResponseInterface {
             return $response;
         });
 
@@ -233,7 +233,7 @@ final class SmsboxTransportTest extends TransportTestCase
     public function testSmsboxInvalidPhoneNumber()
     {
         $response = $this->createMock(ResponseInterface::class);
-        $client = new MockHttpClient(function () use ($response): ResponseInterface {
+        $client = new MockHttpClient(static function () use ($response): ResponseInterface {
             return $response;
         });
 
