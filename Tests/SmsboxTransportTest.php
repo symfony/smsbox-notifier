@@ -167,9 +167,7 @@ final class SmsboxTransportTest extends TransportTestCase
 
     public function testSmsboxOptionsInvalidDateTimeAndDate()
     {
-        $client = new MockHttpClient(static function (): ResponseInterface {
-            return new MockResponse();
-        });
+        $client = new MockHttpClient(static fn (): ResponseInterface => new MockResponse());
 
         $dateTime = new \DateTimeImmutable('+1 day');
 
@@ -192,9 +190,7 @@ final class SmsboxTransportTest extends TransportTestCase
 
     public function testSmsboxInvalidPhoneNumber()
     {
-        $client = new MockHttpClient(static function (): ResponseInterface {
-            return new MockResponse();
-        });
+        $client = new MockHttpClient(static fn (): ResponseInterface => new MockResponse());
 
         $this->expectException(\InvalidArgumentException::class);
         $this->expectExceptionMessage('Invalid phone number');
