@@ -167,7 +167,7 @@ final class SmsboxTransportTest extends TransportTestCase
 
     public function testSmsboxOptionsInvalidDateTimeAndDate()
     {
-        $client = new MockHttpClient(function (): ResponseInterface {
+        $client = new MockHttpClient(static function (): ResponseInterface {
             return new MockResponse();
         });
 
@@ -192,7 +192,7 @@ final class SmsboxTransportTest extends TransportTestCase
 
     public function testSmsboxInvalidPhoneNumber()
     {
-        $client = new MockHttpClient(function (): ResponseInterface {
+        $client = new MockHttpClient(static function (): ResponseInterface {
             return new MockResponse();
         });
 
